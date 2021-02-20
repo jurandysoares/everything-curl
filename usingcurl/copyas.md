@@ -1,75 +1,39 @@
-# Copy as curl
+# Copiar como curl
 
-Using curl to perform an operation a user just managed to do with his or her
-browser is one of the more common requests and areas people ask for help
-about.
+Usar curl para realizar uma operação que um usuário acabou de fazer com seu navegador é uma das solicitações e áreas mais comuns sobre as quais as pessoas pedem ajuda.
 
-How do you get a curl command line to get a resource, just like the browser
-would get it, nice and easy? Chrome, Firefox and Safari all have this feature.
+Como você obtém uma linha de comando curl para obter um recurso, assim como o navegador faria, de forma fácil e agradável? Chrome, Firefox e Safari têm esse recurso.
 
-## From Firefox
+## Do Firefox
 
-You get the site shown with Firefox's network tools. You then right-click on
-the specific request you want to repeat in the "Web Developer->Network" tool
-when you see the HTTP traffic, and in the menu that appears you select "Copy
-as cURL". Like this screenshot below shows. The operation then generates a
-curl command line to your clipboard and you can then paste that into your
-favorite shell window. This feature is available by default in all Firefox
-installations.
+Você obtém o site mostrado com as ferramentas de rede do Firefox. Em seguida, clique com o botão direito do mouse na solicitação específica que deseja repetir na ferramenta "Desenvolvedor da Web-> Rede" ao ver o tráfego HTTP e, no menu que aparece, selecione "Copiar como cURL". Como mostra a imagem abaixo. A operação então gera uma linha de comando curl para sua área de transferência e você pode colá-la na sua janela de shell favorita. Este recurso está disponível por padrão em todas as instalações do Firefox.
 
-![copy as curl with Firefox](firefox-copy-as-curl.png)
+![copiar como curl com o Firefox](../firefox-copy-as-curl.png)
 
-## From Chrome
+## Do Chrome
 
-When you pop up the More tools->Developer mode in Chrome, and you select the
-Network tab you see the HTTP traffic used to get the resources of the site. On
-the line of the specific resource you are interested in, you right-click with
-the mouse and you select "Copy as cURL" and it will generate a command line
-for you in your clipboard. Paste that in a shell to get a curl command line
-that makes the transfer. This feature is available by default in all Chrome and
-Chromium installations.
+Quando você abre o pop-up Mais ferramentas-> modo Desenvolvedor no Chrome e seleciona a guia Rede, você vê o tráfego HTTP usado para obter os recursos do site. Na linha do recurso específico de seu interesse, você clica com o botão direito do mouse e seleciona "Copiar como cURL" e isso gerará uma linha de comando para você em sua área de transferência. Cole isso em um shell para obter uma linha de comando curl que faz a transferência. Este recurso está disponível por padrão em todas as instalações do Chrome e Chromium.
 
-![copy as curl with Chrome](chrome-copy-as-curl.png)
+![copiar como curl com o Chrome](../chrome-copy-as-curl.png)
 
-## From Safari
+## Do Safari
 
-In Safari, the "development" menu is not visible until you go into
-**preferences->Advanced** and enable it. But once you have done that, you can
-select **Show web inspector** in that development menu and get to see a new
-console pop up that is similar to the development tools of Firefox and Chrome.
+No Safari, o menu "desenvolvimento" não fica visível até que você vá em **preferências-> Avançado** e o habilite. Mas, depois de fazer isso, você pode selecionar **Mostrar inspetor da web** nesse menu de desenvolvimento e ver um novo console pop-up semelhante às ferramentas de desenvolvimento do Firefox e do Chrome.
 
-Select the network tab, reload the web page and then you can right click the
-particular resources that you want to fetch with curl, as if you did it with
-Safari..
+Selecione a guia de rede, recarregue a página da web e, em seguida, clique com o botão direito nos recursos específicos que deseja buscar com o curl, como se tivesse feito isso com o Safari ..
 
-![copy as curl with Safari](safari-copy-as-curl.png)
+![copiar como curl com Safari](../safari-copy-as-curl.png)
 
-## On Firefox, without using the devtools
+## No Firefox, sem usar o devtools
 
-If this is something you would like to get done more often, you probably find
-using the developer tools a bit inconvenient and cumbersome to pop up just to
-get the command line copied. Then
-[cliget](https://addons.mozilla.org/en-US/firefox/addon/cliget/) is the
-perfect add-on for you as it gives you a new option in the right-click menu,
-so you can get a quick command line generated really quickly, like this
-example when I right-click an image in Firefox:
+Se isso é algo que você gostaria de fazer com mais frequência, provavelmente achará o uso das ferramentas de desenvolvedor um pouco inconveniente e complicado de aparecer apenas para copiar a linha de comando. Então [cliget](https://addons.mozilla.org/en-US/firefox/addon/cliget/) é o complemento perfeito para você, pois oferece uma nova opção no menu do botão direito, para que você pode obter uma linha de comando rápida gerada muito rapidamente, como este exemplo quando clico com o botão direito em uma imagem no Firefox:
 
-![cliget with Firefox](firefox-cliget.png)
+![cliget com Firefox](../firefox-cliget.png)
 
-## Not perfect
+## Imperfeito
 
-These methods all give you a command line to reproduce their HTTP transfers.
-You will also learn they are still often not the perfect solution to your
-problems. Why? Well mostly because these tools are written to rerun the
-*exact* same request that you copied, while you often want to rerun the same
-logic but not sending an exact copy of the same cookies and file contents etc.
+Todos esses métodos fornecem uma linha de comando para reproduzir suas transferências HTTP. Você também aprenderá que muitas vezes ainda não são a solução perfeita para seus problemas. Porque? Bem, principalmente porque essas ferramentas são escritas para reexecutar a mesma solicitação * exata * que você copiou, enquanto você geralmente deseja reexecutar a mesma lógica, mas não enviar uma cópia exata dos mesmos cookies e conteúdo de arquivo, etc.
 
-These tools will give you command lines with static and fixed cookie contents
-to send in the request, because that is the contents of the cookies that were
-sent in the browser's requests. You will most likely want to rewrite the
-command line to dynamically adapt to whatever the content is in the cookie
-that the server told you in a previous response. And so on.
+Essas ferramentas fornecerão linhas de comando com conteúdo de cookies estáticos e fixos para enviar na solicitação, porque esse é o conteúdo dos cookies que foram enviados nas solicitações do navegador. Provavelmente, você desejará reescrever a linha de comando para se adaptar dinamicamente a qualquer que seja o conteúdo do cookie que o servidor informou em uma resposta anterior. E assim por diante.
 
-The copy as curl functionality is also often notoriously bad at using `-F` and
-instead they provide handcrafted `--data-binary` solutions including the mime
-separator strings etc.
+A funcionalidade copiar como curl também é notoriamente ruim no uso de `-F` e, em vez disso, fornecem soluções feitas à mão em` --data-binary`, incluindo strings separadoras de mime etc.
