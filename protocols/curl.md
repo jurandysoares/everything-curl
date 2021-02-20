@@ -4,29 +4,27 @@ curl suporta cerca de 22 protocolos. Dizemos "cerca de" porque depende de como v
 
 ## DICT
 
-DICT é um protocolo de rede de dicionário, que permite aos clientes perguntar aos servidores de dicionário sobre o significado ou explicação das palavras. Consulte RFC 2229. Os servidores e clientes Dict usam a porta TCP 2628.
+DICT é um protocolo de rede de dicionário, que permite aos clientes perguntar aos servidores de dicionário sobre o significado ou explicação das palavras. Consulte a [RFC 2229](https://tools.ietf.org/html/rfc2229). Os servidores e clientes Dict usam a porta TCP 2628.
 
 ## FILE
 
-FILE is not actually a "network" protocol. It is a URL scheme that allows you to tell curl to get a file from the local file system instead of getting it over the network from a remote server. See RFC 1738.
+FILE não é realmente um protocolo de "rede".s É um esquema de URL que permite que você diga ao curl para obter um arquivo do sistema de arquivos local em vez de obtê-lo pela rede de um servidor remoto. Consulte a [RFC 1738](https://tools.ietf.org/html/rfc1738).
 
 ## FTP
 
-FTP significa Protocolo para Transferência de Arquivo (*File Transfer Protocol* em inglês) e é uma forma antiga (originada no início dos anos 1970) de transferir arquivos de um cliente para o outro.Consulte a RFC 959. Ela foi bastante ampliada ao longo dos anos. Os servidores e clientes FTP usam a porta 21 TCP e mais uma porta, embora a segunda seja geralmente estabelecida dinamicamente durante a comunicação.
+FTP significa Protocolo para Transferência de Arquivo (*File Transfer Protocol* em inglês) e é uma forma antiga (originada no início dos anos 1970) de transferir arquivos de um cliente para o outro. Consulte a [RFC 959](https://tools.ietf.org/html/rfc959). Ela foi bastante ampliada ao longo dos anos. Os servidores e clientes FTP usam a porta 21 TCP e mais uma porta, embora a segunda seja geralmente estabelecida dinamicamente durante a comunicação.
 
 Veja a página externa [FTP vs HTTP](https://daniel.haxx.se/docs/ftp-vs-http.html) para saber como ele difere do HTTP.
 
-
-
 ## FTPS
 
-FTPS significa Protocolo de Transferência de Arquivo Seguro (*Secure File Transfer Protocol* em inglês). Ele segue a tradição de adicionar um 'S' ao nome do protocolo para significar que o protocolo é feito como o FTP normal, mas com uma camada de segurança SSL/TLS adicionada. Consulte RFC 4217.
+FTPS significa Protocolo de Transferência de Arquivo Seguro (*Secure File Transfer Protocol* em inglês). Ele segue a tradição de adicionar um 'S' ao nome do protocolo para significar que o protocolo é feito como o FTP normal, mas com uma camada de segurança SSL/TLS adicionada. Consulte a [RFC 4217](https://tools.ietf.org/html/rfc4217).
 
 Este protocolo é problemático para uso em firewalls e outros equipamentos de rede.
 
 ## GOPHER
 
-Projetado para "distribuir, pesquisar e recuperar documentos pela Internet", Gopher é um pouco o avô do HTTP, já que o HTTP assumiu completamente o controle dos mesmos casos de uso. Consulte RFC 1436. Os servidores e clientes Gopher usam a porta TCP 70.
+Projetado para "distribuir, pesquisar e recuperar documentos pela Internet", Gopher é um pouco o avô do HTTP, já que o HTTP assumiu completamente o controle dos mesmos casos de uso. Consulte a [RFC 1436](https://tools.ietf.org/html/rfc1436). Os servidores e clientes Gopher usam a porta TCP 70.
 
 ## GOPHERS
 
@@ -34,23 +32,23 @@ Gopher sobre TLS. Uma extensão recente do protocolo muito antigo.
 
 ## HTTP
 
-O protocolo de transferência de hipertexto, HTTP, é o protocolo mais amplamente usado para transferência de dados na web e na Internet.Consulte RFC 7230 para HTTP/1.1 e RFC 7540 para [HTTP/2](http-http2.md). Os servidores e clientes HTTP usam a porta TCP 80.
+O protocolo de transferência de hipertexto, HTTP, é o protocolo mais amplamente usado para transferência de dados na web e na Internet. Consulte a [RFC 7230](https://tools.ietf.org/html/rfc7230) para HTTP/1.1 e [RFC 7540](https://tools.ietf.org/html/rfc7540) para [HTTP/2](http-http2.md). Os servidores e clientes HTTP usam a porta TCP 80.
 
 ## HTTPS
 
-HTTP seguro é HTTP feito por meio de uma conexão SSL/TLS. Veja RFC 2818. Servidores e clientes HTTPS usam a porta TCP 443, a menos que falem [HTTP/3](http-http3.md) que então usa QUIC e é feito sobre UDP ...
+HTTP seguro é HTTP feito por meio de uma conexão SSL/TLS. Veja [RFC 2818](https://tools.ietf.org/html/rfc2818). Servidores e clientes HTTPS usam a porta TCP 443, a menos que falem [HTTP/3](http-http3.md) que então usa QUIC e é feito sobre UDP ...
 
 ## IMAP
 
-O Protocolo de Acesso a Mensagens da Internet (*Internet Message Access Protocol* em inglês), IMAP, é um protocolo para acessar, controlar e "ler" e-mail. Consulte RFC 3501. Os servidores e clientes IMAP usam a porta TCP 143. Enquanto as conexões com o servidor começam como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STARTTLS`. Consulte RFC 2595.
+O Protocolo de Acesso a Mensagens da Internet (*Internet Message Access Protocol* em inglês), IMAP, é um protocolo para acessar, controlar e "ler" e-mail. Consulte a [RFC 3501](https://tools.ietf.org/html/rfc3501). Os servidores e clientes IMAP usam a porta TCP 143. Enquanto as conexões com o servidor começam como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STARTTLS`. Consulte a [RFC 2595](https://tools.ietf.org/html/rfc2595).
 
 ## IMAPS
 
-IMAP seguro é IMAP feito por meio de uma conexão SSL/TLS. Essas conexões começam implicitamente usando SSL/TLS e, dessa forma, servidores e clientes usam a porta TCP 993 para se comunicarem entre si. Consulte RFC 8314.
+IMAP seguro é IMAP feito por meio de uma conexão SSL/TLS. Essas conexões começam implicitamente usando SSL/TLS e, dessa forma, servidores e clientes usam a porta TCP 993 para se comunicarem entre si. Consulte a [RFC 8314](https://tools.ietf.org/html/rfc8314).
 
 ## LDAP
 
-O Protocolo Leve para Acesso a Diretório(*Lightweight Directory Access Protocol* em inglês), LDAP, é um protocolo para acessar e manter informações de diretório distribuídas. Basicamente, uma pesquisa de banco de dados. Consulte RFC 4511. Os servidores e clientes LDAP usam a porta TCP 389.
+O Protocolo Leve para Acesso a Diretório(*Lightweight Directory Access Protocol* em inglês), LDAP, é um protocolo para acessar e manter informações de diretório distribuídas. Basicamente, uma pesquisa de banco de dados. Consulte a [RFC 4511](https://tools.ietf.org/html/rfc4511). Os servidores e clientes LDAP usam a porta TCP 389.
 
 ## LDAPS
 
@@ -62,11 +60,11 @@ O Transporte de Telemetria de Enfileiramento de Mensagens (*Message Queuing Tele
 
 ## POP3
 
-O Protocolo Postal (*Post Office Protocol* em inglês) versão 3 (POP3) é um protocolo para recuperar e-mail de um servidor. Veja RFC 1939. Os servidores e clientes POP3 usam a porta 110 do TCP. Embora as conexões com o servidor comecem como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STLS`. Consulte RFC 2595.
+O Protocolo Postal (*Post Office Protocol* em inglês) versão 3 (POP3) é um protocolo para recuperar e-mail de um servidor. Veja [RFC 1939](https://tools.ietf.org/html/rfc1939). Os servidores e clientes POP3 usam a porta 110 do TCP. Embora as conexões com o servidor comecem como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STLS`. Consulte a [RFC 2595](https://tools.ietf.org/html/rfc2595).
 
 ## POP3S
 
-O POP3 seguro é feito POP3 em uma conexão SSL/TLS.Essas conexões são implicitamente iniciadas usando SSL/TLs e, como tal servidores e clientes usam a porta TCP 995 para se comunicar entre si. Veja RFC 8314.
+O POP3 seguro é feito POP3 em uma conexão SSL/TLS.Essas conexões são implicitamente iniciadas usando SSL/TLs e, como tal servidores e clientes usam a porta TCP 995 para se comunicar entre si. Veja [RFC 8314](https://tools.ietf.org/html/rfc8314).
 
 ## RTMP
 
@@ -74,7 +72,7 @@ The Protocolo de Mensagens em Tempo Real (*Real-Time Messaging Protocol* em ingl
 
 ## RTSP
 
-O Protocolo de Transmissão em Tempo Real (*Real Time Streaming Protocol*) (RTSP) é um protocolo de controle de rede para controlar servidores de *streaming* (fluxo) de mídia. Consulte RFC 2326. Os servidores e clientes RTSP usam a porta 554 TCP e UDP.
+O Protocolo de Transmissão em Tempo Real (*Real Time Streaming Protocol*) (RTSP) é um protocolo de controle de rede para controlar servidores de *streaming* (fluxo) de mídia. Consulte a [RFC 2326](https://tools.ietf.org/html/rfc2326). Os servidores e clientes RTSP usam a porta 554 TCP e UDP.
 
 ## SCP
 
@@ -90,15 +88,15 @@ O Protocolo Bloco de Mensagens do Servidor (*Server Message Block* em inglês) (
 
 ## SMTP
 
-Protocolo Simples de Transferência de Correio (*Simple Mail Transfer Protocol* em inglês) (SMTP) é um protocolo para transmissão de e-mail. Veja RFC 5321. Os servidores e clientes SMTP usam a porta TCP 25. Embora as conexões com o servidor comecem como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STARTTLS`. Consulte RFC 3207.
+Protocolo Simples de Transferência de Correio (*Simple Mail Transfer Protocol* em inglês) (SMTP) é um protocolo para transmissão de e-mail. Veja [RFC 5321](https://tools.ietf.org/html/rfc5321). Os servidores e clientes SMTP usam a porta TCP 25. Embora as conexões com o servidor comecem como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STARTTLS`. Consulte a [RFC 3207](https://tools.ietf.org/html/rfc3207).
 
 ## SMTPS
 
-O SMTP seguro, às vezes chamado de SSMTP, é o SMTP feito por meio de uma conexão SSL/TLS. Essas conexões começam implicitamente usando SSL/TLS e, dessa forma, servidores e clientes usam a porta TCP 465 para se comunicarem entre si. Consulte RFC 8314.
+O SMTP seguro, às vezes chamado de SSMTP, é o SMTP feito por meio de uma conexão SSL/TLS. Essas conexões começam implicitamente usando SSL/TLS e, dessa forma, servidores e clientes usam a porta TCP 465 para se comunicarem entre si. Consulte a [RFC 8314](https://tools.ietf.org/html/rfc8314).
 
 ## TELNET
 
-TELNET é um protocolo de camada de aplicação usado em redes para fornecer um recurso de comunicação orientado a texto interativo bidirecional usando uma conexão de terminal virtual. Consulte RFC 854. Os servidores e clientes TELNET usam a porta 23 do TCP.
+TELNET é um protocolo de camada de aplicação usado em redes para fornecer um recurso de comunicação orientado a texto interativo bidirecional usando uma conexão de terminal virtual. Consulte a [RFC 854](https://tools.ietf.org/html/rfc854). Os servidores e clientes TELNET usam a porta 23 do TCP.
 
 ## TFTP
 
