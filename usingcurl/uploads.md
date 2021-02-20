@@ -1,108 +1,71 @@
-## Uploads
+## Uploads/Carregamentos
 
-Uploading is a term for sending data to a remote server. Uploading is done
-differently for each protocol, and several protocols may even allow different
-ways of uploading data.
+Upload (carregamento) é um termo para enviar dados a um servidor remoto. O upload é feito de maneira diferente para cada protocolo, e vários protocolos podem até permitir maneiras diferentes de fazer upload de dados.
 
-### Protocols allowing upload
+### Protocolos que permitem upload
 
-You can upload data using one of these protocols: FILE, FTP, FTPS, HTTP,
-HTTPS, IMAP, IMAPS, SCP, SFTP, SMB, SMBS, SMTP, SMTPS and TFTP.
+Você pode fazer upload de dados usando um destes protocolos: FILE, FTP, FTPS, HTTP, HTTPS, IMAP, IMAPS, SCP, SFTP, SMB, SMBS, SMTP, SMTPS e TFTP.
 
-### HTTP offers several "uploads"
+### HTTP oferece vários "uploads"
 
-HTTP (and its bigger brother HTTPS) provides several different ways to upload
-data to a server and curl offers easy command-line options to do it the three
-most common ways, described below.
+O HTTP (e seu irmão mais velho, o HTTPS) fornece várias maneiras diferentes de fazer upload de dados para um servidor e o curl oferece opções de linha de comando fáceis para fazer isso das três maneiras mais comuns, descritas abaixo.
 
-An interesting detail with HTTP is also that an upload can also be a download,
-in the same operation and in fact many downloads are initiated with an HTTP
-POST.
+Um detalhe interessante com HTTP também é que um upload também pode ser um download, na mesma operação e de fato muitos downloads são iniciados com um HTTP POST.
 
-#### POST
+#### POST (PUBLICAR)
 
-POST is the HTTP method that was invented to send data to a receiving web
-application, and it is, for example, how most common HTML forms on the web
-work. It usually sends a chunk of relatively small amounts of data to the
-receiver.
+POST é o método HTTP que foi inventado para enviar dados a um aplicativo da Web de recebimento e, por exemplo, é como funcionam os formulários HTML mais comuns na Web. Geralmente, envia um bloco de quantidades relativamente pequenas de dados ao receptor.
 
-The upload kind is usually done with the `-d` or `--data` options, but there
-are a few additional alterations.
+O tipo de upload geralmente é feito com as opções `-d` ou `--data`, mas existem algumas alterações adicionais.
 
-Read the detailed description on how to do this with curl in the [HTTP POST
-with curl](http-post.md) chapter.
+Leia a descrição detalhada sobre como fazer isso com curl no capítulo [HTTP POST com curl](http-post.md).
 
-#### multipart formpost
+#### Postagem de formulários de várias partes (*multipart formpost*)
 
-Multipart formposts are also used in HTML forms on web sites; typically when
-there's a file upload involved. This type of upload is also an HTTP POST but it
-sends the data formatted according to some special rules, which is what the
-"multipart" name means.
+A postagem de formulários com várias partes também são usados ​​em formulários HTML em sites; normalmente quando há um upload de arquivo envolvido. Este tipo de upload também é um HTTP POST, mas envia os dados formatados de acordo com algumas regras especiais, que é o que significa o nome "multipart".
 
-Since it sends the data formatted completely differently, you cannot select
-which type of POST to use at your own whim but it entirely depends on what the
-receiving server end expects and can handle.
+Como ele envia os dados formatados de maneira completamente diferente, você não pode selecionar qual tipo de POST usar por sua própria vontade, mas depende inteiramente do que o servidor receptor espera e pode lidar.
 
-HTTP multipart formposts are done with `-F`. See the detailed description in
-the [HTTP multipart formposts](http-multipart.md) chapter.
+Formulários HTTP multipartes são feitos com `-F`. Veja a descrição detalhada no capítulo [HTTP multipart formposts](http-multipart.md).
 
-#### PUT
+#### PUT (POR)
 
-HTTP PUT is the upload method that was designed to send a complete resource
-meant to be put as-is on the remote site or even replace an existing resource
-there. That said, this is also the least used upload method for HTTP on the
-web today and lots, if not most, web servers do not even have PUT enabled.
+HTTP PUT é o método de upload projetado para enviar um recurso completo para ser colocado como está no site remoto ou até mesmo substituir um recurso existente lá. Dito isso, este também é o método de upload menos usado para HTTP na web hoje e muitos, senão a maioria, dos servidores web nem mesmo têm o PUT habilitado.
 
-You send off an HTTP upload using the -T option with the file to upload:
+Você envia um upload HTTP usando a opção -T com o arquivo a ser enviado:
 
-    curl -T uploadthis http://example.com/
+    curl -T carregue-isso http://example.com/
 
-### FTP uploads
+### uploads de FTP
 
-Working with FTP, you get to see the remote file system you will be accessing.
-You tell the server exactly in which directory you want the upload to be
-placed and which file name to use. If you specify the upload URL with a
-trailing slash, curl will append the locally used file name to the URL and
-then that will be the file name used when stored remotely:
+Trabalhando com FTP, você consegue ver o sistema de arquivos remoto que estará acessando. Você informa ao servidor exatamente em qual diretório deseja que o upload seja colocado e qual nome de arquivo usar. Se você especificar o URL de upload com uma barra final, curl acrescentará o nome do arquivo usado localmente à URL e esse será o nome do arquivo usado quando armazenado remotamente:
 
-    curl -T uploadthis ftp://example.com/this/directory/
+    curl -T carregue-isso ftp://example.com/esse/diretorio/
 
-So if you prefer to select a different file name on the remote side than what
-you have used locally, you specify it in the URL:
+Portanto, se você preferir selecionar um nome de arquivo diferente no lado remoto do que o usado localmente, especifique-o no URL:
 
-    curl -T uploadthis ftp://example.com/this/directory/remotename
+    curl -T carregue-isso ftp://example.com/esse/diretorio/nome-remoto
 
-Learn more about FTPing with curl in the [Using curl/FTP](usingcurl-ftp.md)
-section.
+Aprenda mais sobre FTP com curl na seção [Using curl/FTP](usingcurl-ftp.md).
 
-### SMTP uploads
+### uploads SMTP
 
-You may not consider sending an e-mail to be "uploading", but to curl it is.
-You upload the mail body to the SMTP server. With SMTP, you also need to
-include all the e-mail headers you need (To:, From:, Date:, etc.) in the mail
-body as curl will not add any at all.
+Você pode não considerar o envio de um e-mail para "fazer upload", mas para curl é. Você carrega o corpo da mensagem para o servidor SMTP. Com o SMTP, você também precisa incluir todos os cabeçalhos de e-mail de que precisa (Para:, De:, Data:, etc.) no corpo do e-mail, pois o curl não adicionará nenhum.
 
-    curl -T mail smtp://mail.example.com/ --mail-from user@example.com
+    curl -T mail smtp: //mail.example.com/ --mail-from user@example.com
 
-Learn more about using SMTP with curl in the [Using
-curl/SMTP](usingcurl-smtp.md) section.
+Saiba mais sobre como usar SMTP com curl na seção [Usando curl/SMTP](usingcurl-smtp.md).
 
-### Progress meter for uploads
+### Medidor de progresso para uploads
 
-The general progress meter curl provides (see the [Progress
-meter](cmdline-progressmeter.md) section) works fine for uploads as well.
-What needs to be remembered is that the progress meter is automatically
-disabled when you are sending output to stdout, and most protocols curl support
-can output something even for an upload.
+The general progress meter curl provides
 
-Therefore, you may need to explicitly redirect the downloaded data to a file
-(using shell redirect '>', `-o` or similar) to get the progress meter
-displayed for upload.
+O medidor de progresso genérico que o curl disponibiliza  (consulte a seção [Medidor de progresso](cmdline-progressmeter.md)) também funciona bem para uploads. O que precisa ser lembrado é que o medidor de progresso é desabilitado automaticamente quando você está enviando a saída para stdout, e a maioria dos protocolos de suporte a curl pode gerar algo até mesmo para um upload.
 
-### Rate limiting
+Portanto, você pode precisar redirecionar explicitamente os dados baixados para um arquivo (usando o redirecionamento de shell `>`, `-o` ou similar) para obter o medidor de progresso exibido para upload.
 
-Rate limiting works exactly the same for uploads as for downloads and curl, in
-fact, only has a single limit that will limit the speed in both directions.
+### Limitação de taxa de transferência
 
-See further details in the [Download Rate limiting
-section](usingcurl-downloads.md#rate-limiting).
+A limitação de taxa de transferência funciona exatamente da mesma forma para uploads e downloads e curl; na verdade, só tem um único limite que limitará a velocidade em ambas as direções.
+
+Veja mais detalhes na [seção de limitação da taxa de transferẽncia](downloads.md#limitacao-de-taxa-de-transferencia).
