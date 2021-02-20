@@ -1,10 +1,5 @@
-# Network and protocols
+# Rede e protocolos
 
-Before diving in and talking about how to use curl to get things done, let's
-take a look at what all this networking is and how it works, using
-simplifications and some minor shortcuts to give an easy overview.
+Antes de mergulhar e falar sobre como usar o curl para fazer as coisas, vamos dar uma olhada no que é toda essa rede e como ela funciona, usando simplificações e alguns pequenos atalhos para fornecer uma visão geral fácil.
 
-The basics are in the [networking simplified](protocols-network.md) chapter that
-tries to just draw a simple picture of what networking is from a curl
-perspective, and the [protocols](protocols-protocols.md) section which explains
-what exactly a "protocol" is and how that works.
+Os fundamentos estão no capítulo [Rede simplificada](protocols/network.md) que tenta apenas desenhar uma imagem simples do que é rede de uma perspectiva curl, e a seção [protocolos](protocols/protocols.md) que explica o que exatamente é um "protocolo" e como ele funciona.
