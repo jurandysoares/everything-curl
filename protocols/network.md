@@ -1,86 +1,41 @@
-## Networking simplified
+## Rede simplificada
 
-Networking means communicating between two endpoints on the Internet. The
-Internet is just a bunch of interconnected machines (computers really), each
-using their own private addresses (called [IP addresses](https://en.wikipedia.org/wiki/IP_address)). The addresses each
-machine have can be of different types and machines can even have temporary
-addresses. These computers are often called hosts.
+Rede significa comunicação entre dois terminais na Internet. A Internet é apenas um monte de máquinas interconectadas (computadores, na verdade), cada uma usando seus próprios endereços privados (chamados [endereços IP](https://pt.wikipedia.org/wiki/Endere%C3%A7o_IP)). Os endereços de cada máquina podem ser de tipos diferentes e as máquinas podem até ter endereços temporários. Esses computadores costumam ser chamados de hosts.
 
-The computer, tablet or phone you sit in front of is usually called "the
-client" and the machine out there somewhere that you want to exchange data
-with is called "the server". The main difference between the client and the
-server is in the roles they play here. There's nothing that prevents the roles
-from being reversed in a subsequent operation.
+O computador, tablet ou telefone que você está sentado em frente é geralmente chamado de "o cliente" e a máquina em algum lugar com a qual você deseja trocar dados é chamada de "servidor". A principal diferença entre o cliente e o servidor está nas funções que eles desempenham aqui. Não há nada que impeça as funções de serem invertidas em uma operação subsequente.
 
-### Which machine
+### Qual máquina
 
-When you want to initiate a transfer to one of the machines out there (a
-server), you usually do not know its IP addresses but instead you usually
-know its name. The name of the machine you will talk to is embedded in the URL
-that you work with when you use curl.
+Quando você deseja iniciar uma transferência para uma das máquinas lá fora (um servidor), você geralmente não sabe seus endereços IP, mas em vez disso, geralmente sabe seu nome. O nome da máquina com a qual você vai falar está embutido na URL com a qual você trabalha quando usa o curl.
 
-You might use a URL like "http://example.com/index.html", which means you will
-connect to and communicate with the host named example.com.
+Você pode usar um URL como "http://example.com/index.html", o que significa que você se conectará e se comunicará com o host chamado example.com.
 
-### Host name resolving
+### Resolução de nome de host
 
-Once we know the host name, we need to figure out which IP addresses that host
-has so that we can contact it.
+Depois de saber o nome do host, precisamos descobrir quais endereços IP esse host possui para que possamos contatá-lo.
 
-Converting the name to an IP address is often called 'name resolving'. The name
-is "resolved" to one or a set of addresses. This is usually done by a "DNS
-server", DNS being like a big lookup table that can convert names to
-addresses—all the names on the Internet, really. Your computer normally
-already knows the address of a computer that runs the DNS server as that is
-part of setting up the network.
+A conversão do nome em um endereço IP costuma ser chamada de 'resolução de nomes'. O nome é "resolvido" para um ou um conjunto de endereços. Isso geralmente é feito por um "servidor DNS", o DNS sendo como uma grande tabela de pesquisa que pode converter nomes em endereços - todos os nomes na Internet, na verdade. Normalmente, seu computador já conhece o endereço de um computador que executa o servidor DNS, pois isso faz parte da configuração da rede.
 
-curl will therefore ask the DNS server: "Hello, please give me all the
-addresses for example.com", and the server responds with a list of them. Or in
-the case you spell the name wrong, it can answer back that the name does not
-exist.
+curl irá, portanto, perguntar ao servidor DNS: "Olá, por favor me dê todos os endereços de example.com", e o servidor responderá com uma lista deles. Ou no caso de você digitar o nome errado, ele pode responder que o nome não existe.
 
-### Establish a connection
+### Estabeleça uma conexão
 
-With a list of IP addresses for the host curl wants to contact, curl sends out
-a "connect request". The connection curl wants to establish is called TCP
-([Transmission Control
-Protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)) and it
-works similar to connecting an invisible string between two computers. Once
-established, it can be used to send a stream of data in both directions.
+Com uma lista de endereços IP para o host que o curl deseja contatar, o curl envia uma "solicitação de conexão". A conexão que o curl  deseja estabelecer é chamado de TCP ([Transmission Control Protocol](https://pt.wikipedia.org/wiki/Transmission_Control_Protocol)) e funciona de forma semelhante à conexão de um string invisível entre dois computadores. Uma vez estabelecido, ele pode ser usado para enviar um fluxo de dados em ambas as direções.
 
-As curl gets a list of addresses for the host, it will actually traverse that
-list of addresses when connecting and in case one fails it will try to connect
-to the next one until either one works or they all fail.
+Conforme curl obtém uma lista de endereços para o host, ele irá percorrer essa lista de endereços ao se conectar e, no caso de um falhar, tentará se conectar ao próximo até que um funcione ou todos falhem.
 
-### Connects to "port numbers"
+### Conecta-se a "números de porta"
 
-When connecting with TCP to a remote server, a client selects which port
-number to do that on. A port number is just a dedicated place for a
-particular service, which allows that same server to listen to other services on
-other port numbers at the same time.
+Ao se conectar com TCP a um servidor remoto, um cliente seleciona em qual número de porta fazer isso. Um número de porta é apenas um local dedicado para um serviço específico, o que permite que o mesmo servidor ouça outros serviços em outros números de porta ao mesmo tempo.
 
-Most common protocols have default port numbers that clients and servers
-use. For example, when using the "http://example.com/index.html" URL, that URL
-specifies a scheme called "http" which tells the client that it should try TCP
-port number 80 on the server by default. The URL can optionally provide
-another, custom, port number but if nothing special is specified, it will use the
-default port for the scheme used in the URL.
+Os protocolos mais comuns têm números de porta padrão que os clientes e servidores usam. Por exemplo, ao usar o URL "http://example.com/index.html", esse URL especifica um esquema chamado "http" que informa ao cliente que ele deve tentar a porta TCP de número 80 no servidor por padrão. O URL pode opcionalmente fornecer outro número de porta personalizado, mas se nada de especial for especificado, ele usará a porta padrão para o esquema usado no URL.
 
 ### TLS
 
-After the TCP connection has been established, many transfers will require
-that both sides negotiate a better security level before continuing, and that
-is often TLS; Transport Layer Security. If that is used, the client and server
-will do a TLS handshake first and only continue further if that succeeds.
+Depois que a conexão TCP for estabelecida, muitas transferências exigirão que ambos os lados negociem um nível de segurança melhor antes de continuar, e isso geralmente é TLS: Segurança da camada de transporte (*Transport Layer Security* em inglês). Se isso for usado, o cliente e o servidor farão um aperto de mãos (*handshake* em inglês) TLS primeiro e só continuarão se tiver êxito.
 
-### Transfer data
+### Transferir dados
 
-When the connecting "string" we call TCP is attached to the remote computer
-(and we have done the possible additional TLS handshake), there's an
-established connection between the two machines and that connection can then
-be used to exchange data. That communication is done using a "protocol", as
-discussed in the following chapter.
+Quando a "string" de conexão que chamamos de TCP é anexada ao computador remoto (e fizemos o possível aperto de mãos adicional do TLS), há uma conexão estabelecida entre as duas máquinas e essa conexão pode então ser usada para trocar dados. Essa comunicação é feita por meio de um "protocolo", conforme discutido no capítulo seguinte.
 
-Traditionally, what is called a *download* is when data is transferred from a
-server to a client and inversely an *upload* is when data is transferred from
-the client to the server. The client is down here. The server is up there.
+Tradicionalmente, o que é chamado de *download* (baixar, descarregar) é quando os dados são transferidos de um servidor para um cliente e, inversamente, um *upload* (subir, carregar) é quando os dados são transferidos do cliente para o servidor. O cliente está aqui. O servidor está lá em cima.

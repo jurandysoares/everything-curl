@@ -1,115 +1,55 @@
-## Protocol
+## Protocolo
 
-The language used to ask for data to get sent—in either direction—is
-called **the protocol**. The protocol describes exactly how to ask the server
-for data, or to tell the server that there is data coming.
+A linguagem usada para solicitar o envio de dados - em qualquer direção - é chamada de **protocolo**. O protocolo descreve exatamente como solicitar dados ao servidor ou informar ao servidor que há dados chegando.
 
-Protocols are typically defined by the IETF ([Internet Engineering Task
-Force](https://www.ietf.org/)), which hosts RFC documents that describe exactly
-how each protocol works: how clients and servers are supposed to act and what
-to send and so on.
+Os protocolos são normalmente definidos pelo IETF ([Internet Engineering Task Force](https://www.ietf.org/)), que hospeda documentos RFC que descrevem exatamente como cada protocolo funciona: como os clientes e servidores devem agir e o que enviar e assim por diante.
 
-## What protocols does curl support?
+## Quais protocolos o curl suporta?
 
-curl supports protocols that allow "data transfers" in either or both
-directions. We usually also restrict ourselves to protocols which have a "URI
-format" described in an RFC or at least is somewhat widely used, as curl works
-primarily with URLs (URIs really) as the input key that specifies the
-transfer.
+curl suporta protocolos que permitem "transferências de dados" em uma ou ambas as direções. Normalmente também nos restringimos a protocolos que têm um "formato URI" descrito em um RFC ou que é pelo menos amplamente usado, já que curl funciona principalmente com URLs (URIs na verdade) como a chave de entrada que especifica a transferência.
 
-The latest curl (as of this writing) supports these protocols:
+O curl mais recente (no momento desta escrita) oferece suporte a estes protocolos:
 
 DICT, FILE, FTP, FTPS, GOPHER, GOPHERS, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS,
 MQTT, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET, TFTP
 
-To complicate matters further, the protocols often exist in different versions
-or flavors as well.
+Para complicar ainda mais, os protocolos geralmente existem em diferentes versões ou sabores também.
 
-## What other protocols are there?
+## Que outros protocolos existem?
 
-The world is full of protocols, both old and new. Old protocols get abandoned
-and dropped and new ones get introduced. There's never a state of stability but
-the situation changes from day to day and year to year. You can rest assured
-that there will be new protocols added in the list above in the future and that
-there will be new versions of the protocols already listed.
+O mundo está cheio de protocolos, antigos e novos. Protocolos antigos são abandonados e descartados, e novos são introduzidos. Nunca existe um estado de estabilidade, mas a situação muda de dia para dia e de ano para ano. Você pode ter certeza de que haverá novos protocolos adicionados à lista acima no futuro e que haverá novas versões dos protocolos já listados.
 
-There are, of course, already other protocols in existence that curl does not yet
-support. We are open to supporting more protocols that suit the general curl
-paradigms, we just need developers to write the necessary code adjustments for
-them.
+É claro que já existem outros protocolos que curl ainda não suporta. Estamos abertos para oferecer suporte a mais protocolos que atendam aos paradigmas gerais de curl, só precisamos que os desenvolvedores escrevam os ajustes de código necessários para eles.
 
-## How are protocols developed?
 
-Both new versions of existing protocols and entirely new protocols are usually
-developed by persons or teams that feel that the existing ones are not good
-enough. Something about them makes them not suitable for a particular use case
-or perhaps some new idea has popped up that could be applied to improve
-things.
+## Como os protocolos são desenvolvidos?
 
-Of course, nothing prevents anyone from developing a protocol entirely on their
-own at their own pleasure in their own backyard, but the major protocols are
-usually brought to the IETF at a fairly early stage where they are then
-discussed, refined, debated and polished and then eventually, ideally, turned
-into a published RFC document.
+Ambas as novas versões de protocolos existentes e protocolos inteiramente novos são geralmente desenvolvidos por pessoas ou equipes que acham que os existentes não são bons o suficiente. Algo sobre eles os torna inadequados para um caso de uso específico ou talvez alguma ideia nova que possa ser aplicada para melhorar as coisas tenha surgido.
 
-Software developers then read the RFC specifications and deploy their code in
-the world based on their interpretations of the words in those documents. It
-sometimes turn out that some of the specifications are subject to vastly
-different interpretations or sometimes the engineers are just lazy and ignore
-sound advice in the specs and deploy something that does not adhere.
-Writing software that interoperates with other implementations of the
-specifications can therefore end up being hard work.
+Claro, nada impede ninguém de desenvolver um protocolo inteiramente por conta própria em seu próprio prazer em seu próprio quintal, mas os principais protocolos são geralmente trazidos para o IETF em um estágio bastante inicial, onde são então discutidos, refinados, debatidos e polidos e então, eventualmente, idealmente, se tornam um documento RFC publicado.
 
-## How much do protocols change?
+Os desenvolvedores de software então leem as especificações RFC e implantam seu código no mundo inteiro com base em suas interpretações das palavras nesses documentos. Às vezes acontece que algumas das especificações estão sujeitas a interpretações muito diferentes ou às vezes os engenheiros são apenas preguiçosos e ignoram os bons conselhos nas especificações e implantam algo que não segue. Escrever software que interopera com outras implementações das especificações pode, portanto, acabar sendo um trabalho árduo.
 
-Like software, protocol specifications are frequently updated and new protocol
-versions are created.
+## Quanto os protocolos mudam?
 
-Most protocols allow some level of extensibility which makes new extensions
-show up over time, extensions that make sense to support.
+Como o software, as especificações do protocolo são atualizadas com frequência e novas versões do protocolo são criadas.
 
-The interpretation of a protocol sometimes changes even if the spec remains the
-same.
+A maioria dos protocolos permite algum nível de extensibilidade que faz com que novas extensões apareçam com o tempo, extensões cujo suporte faz sentido.
 
-The protocols mentioned in this chapter are all "Application Protocols", which
-means they are transferred over more lower level protocols, like TCP, UDP and
-TLS. They are also themselves protocols that change over time, get new
-features and get attacked so that new ways of handling security, etc., forces
-curl to adapt and change.
+A interpretação de um protocolo às vezes muda, mesmo se as especificações permanecerem as mesmas.
 
-## About adhering to standards and who's right
+Os protocolos mencionados neste capítulo são todos "Protocolos da camada de aplicação", o que significa que são transferidos por meio de protocolos de nível mais baixo, como TCP, UDP e TLS. Eles também são protocolos que mudam com o tempo, obtêm novos recursos e são atacados, de forma que novas formas de lidar com a segurança etc. obrigam o curl a se adaptar e mudar.
 
-Generally, there are protocol specs that tell us how to send and receive data
-for specific protocols. The protocol specs we follow are RFCs put together and
-published by IETF.
+## Sobre aderir aos padrões e quem está certo
 
-Some protocols are not properly documented in a final RFC, like, for example,
-SFTP for which our implementation is based on an Internet-draft that is not
-even the last available one.
+Geralmente, existem especificações de protocolo que nos dizem como enviar e receber dados para protocolos específicos. As especificações de protocolo que seguimos são RFCs reunidas e publicadas pela IETF.
 
-Protocols are, however, spoken by two parties and like in any given
-conversation, there are then two sides of understanding something or
-interpreting the given instructions in a spec. Also, lots of network software
-is written without the authors paying close attention to the spec so they end
-up taking some shortcuts, or perhaps they just interpreted the text
-differently. Sometimes even mistakes and bugs make software behave in ways
-that are not mandated by the spec and sometimes even downright forbidden in
-the specs.
+Alguns protocolos não estão devidamente documentados em um RFC final, como, por exemplo, SFTP para o qual nossa implementação é baseada em um rascunho da Internet que não é o último disponível.
 
-In the curl project we use the published specs as rules on how to act until we
-learn anything else. If popular alternative implementations act differently
-than what we think the spec says and that alternative behavior is what works
-widely on the big Internet, then chances are we will change foot and instead
-decide to act like those others. If a server refuses to talk with us when we
-think we follow the spec but works fine when we bend the rules every so
-slightly, then we probably end up bending them exactly that way—if we can
-still work successfully with other implementations.
+Os protocolos são, no entanto, falados por duas partes e, como em qualquer conversa, existem dois lados de compreensão de algo ou interpretando as instruções dadas em uma especificação. Além disso, muito software de rede é escrito sem os autores prestando muita atenção à especificação, então eles acabam fazendo alguns atalhos, ou talvez eles apenas interpretam o texto de maneira diferente. Às vezes, mesmo erros e bugs fazem software se comportar de maneiras que não são mandadas pela especificação e às vezes até francamente proibidas nas especificações.
 
-Ultimately, it is a personal decision and up for discussion in every case
-where we think a spec and the real world do not align.
+No projeto Curl, usamos as especificações publicadas como regras sobre como atuar até aprender qualquer outra coisa. Se as implementações alternativas populares atuam diferentemente do que o que achamos que a especificação diz e esse comportamento alternativo é o que funciona amplamente na grande Internet, então as chances são que vamos mudar de pé e, em vez disso, decidir agir como os outros. Se um servidor se recusar a falar conosco quando achamos que seguimos a especificação, mas funciona bem quando dobramos as regras a cada tão ligeiramente, provavelmente acabamos dobrando-os exatamente dessa maneira - se ainda podemos trabalhar com sucesso com outras implementações.
 
-In the worst cases we introduce options to let application developers and curl
-users have the final say on what curl should do. I say worst because it is
-often really tough to ask users to make these decisions as it usually involves
-tricky details and weirdness going on and it is a lot to ask of users. We
-should always do our best to avoid pushing such protocol decisions to users.
+Em última análise, é uma decisão pessoal e passível de discussão em todos os casos em que pensamos que uma especificação e o mundo real não se alinham.
+
+Nos piores casos, introduzimos opções para permitir que os desenvolvedores de aplicativos e os usuários da Curl tenham a palavra final sobre o que o curl deve fazer. Eu digo pior porque muitas vezes é muito difícil pedir aos usuários tomar essas decisões, pois geralmente envolve detalhes complicados e estranheza acontecendo e é muito para fazer os usuários. Devemos sempre fazer o nosso melhor para evitar pressionar tais decisões de protocolo para os usuários.

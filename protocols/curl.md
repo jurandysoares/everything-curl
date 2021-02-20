@@ -1,161 +1,105 @@
-# The protocols curl supports
+# Os protocolos que curl suporta
 
-curl supports about 22 protocols. We say "about" because it depends on how you
-count and what you consider to be distinctly different protocols.
+curl suporta cerca de 22 protocolos. Dizemos "cerca de" porque depende de como você conta e do que considera serem protocolos claramente diferentes.
 
 ## DICT
 
-DICT is a dictionary network protocol, it allows clients to ask dictionary
-servers about a meaning or explanation for words. See RFC 2229. Dict servers
-and clients use TCP port 2628.
+DICT é um protocolo de rede de dicionário, que permite aos clientes perguntar aos servidores de dicionário sobre o significado ou explicação das palavras. Consulte RFC 2229. Os servidores e clientes Dict usam a porta TCP 2628.
 
 ## FILE
 
-FILE is not actually a "network" protocol. It is a URL scheme that allows you
-to tell curl to get a file from the local file system instead of getting it
-over the network from a remote server. See RFC 1738.
+FILE is not actually a "network" protocol. It is a URL scheme that allows you to tell curl to get a file from the local file system instead of getting it over the network from a remote server. See RFC 1738.
 
 ## FTP
 
-FTP stands for File Transfer Protocol and is an old (originates in the early
-1970s) way to transfer files back and forth between a client and a server. See
-RFC 959. It has been extended greatly over the years. FTP servers and clients
-use TCP port 21 plus one more port, though the second one is usually
-dynamically established during communication.
+FTP significa Protocolo para Transferência de Arquivo (*File Transfer Protocol* em inglês) e é uma forma antiga (originada no início dos anos 1970) de transferir arquivos de um cliente para o outro.Consulte a RFC 959. Ela foi bastante ampliada ao longo dos anos. Os servidores e clientes FTP usam a porta 21 TCP e mais uma porta, embora a segunda seja geralmente estabelecida dinamicamente durante a comunicação.
 
-See the external page [FTP vs
-HTTP](https://daniel.haxx.se/docs/ftp-vs-http.html) for how it differs to
-HTTP.
+Veja a página externa [FTP vs HTTP](https://daniel.haxx.se/docs/ftp-vs-http.html) para saber como ele difere do HTTP.
+
+
 
 ## FTPS
 
-FTPS stands for Secure File Transfer Protocol. It follows the tradition of
-appending an 'S' to the protocol name to signify that the protocol is done
-like normal FTP but with an added SSL/TLS security layer. See RFC 4217.
+FTPS significa Protocolo de Transferência de Arquivo Seguro (*Secure File Transfer Protocol* em inglês). Ele segue a tradição de adicionar um 'S' ao nome do protocolo para significar que o protocolo é feito como o FTP normal, mas com uma camada de segurança SSL/TLS adicionada. Consulte RFC 4217.
 
-This protocol is problematic to use through firewalls and other network
-equipment.
+Este protocolo é problemático para uso em firewalls e outros equipamentos de rede.
 
 ## GOPHER
 
-Designed for "distributing, searching, and retrieving documents over the
-Internet", Gopher is somewhat of the grand father to HTTP as HTTP has mostly
-taken over completely for the same use cases. See RFC 1436. Gopher servers and
-clients use TCP port 70.
+Projetado para "distribuir, pesquisar e recuperar documentos pela Internet", Gopher é um pouco o avô do HTTP, já que o HTTP assumiu completamente o controle dos mesmos casos de uso. Consulte RFC 1436. Os servidores e clientes Gopher usam a porta TCP 70.
 
 ## GOPHERS
 
-Gopher over TLS. A recent extension to the very old protocol.
-
+Gopher sobre TLS. Uma extensão recente do protocolo muito antigo.
 
 ## HTTP
 
-The Hypertext Transfer Protocol, HTTP, is the most widely used protocol for
-transferring data on the web and over the Internet. See RFC 7230 for HTTP/1.1
-and RFC 7540 for [HTTP/2](http-http2.md). HTTP servers and clients use TCP
-port 80.
+O protocolo de transferência de hipertexto, HTTP, é o protocolo mais amplamente usado para transferência de dados na web e na Internet.Consulte RFC 7230 para HTTP/1.1 e RFC 7540 para [HTTP/2](http-http2.md). Os servidores e clientes HTTP usam a porta TCP 80.
 
 ## HTTPS
 
-Secure HTTP is HTTP done over an SSL/TLS connection. See RFC 2818. HTTPS
-servers and clients use TCP port 443, unless they speak
-[HTTP/3](http-http3.md) which then uses QUIC and is done over UDP...
+HTTP seguro é HTTP feito por meio de uma conexão SSL/TLS. Veja RFC 2818. Servidores e clientes HTTPS usam a porta TCP 443, a menos que falem [HTTP/3](http-http3.md) que então usa QUIC e é feito sobre UDP ...
 
 ## IMAP
 
-The Internet Message Access Protocol, IMAP, is a protocol for accessing,
-controlling and "reading" email. See RFC 3501. IMAP servers and clients use
-TCP port 143. Whilst connections to the server start out as cleartext, SSL/TLS
-communication may be supported by the client explicitly requesting to upgrade
-the connection using the `STARTTLS` command. See RFC 2595.
+O Protocolo de Acesso a Mensagens da Internet (*Internet Message Access Protocol* em inglês), IMAP, é um protocolo para acessar, controlar e "ler" e-mail. Consulte RFC 3501. Os servidores e clientes IMAP usam a porta TCP 143. Enquanto as conexões com o servidor começam como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STARTTLS`. Consulte RFC 2595.
 
 ## IMAPS
 
-Secure IMAP is IMAP done over an SSL/TLS connection. Such connections implicitly
-start out using SSL/TLS and as such servers and clients use TCP port 993 to
-communicate with each other. See RFC 8314.
+IMAP seguro é IMAP feito por meio de uma conexão SSL/TLS. Essas conexões começam implicitamente usando SSL/TLS e, dessa forma, servidores e clientes usam a porta TCP 993 para se comunicarem entre si. Consulte RFC 8314.
 
 ## LDAP
 
-The Lightweight Directory Access Protocol, LDAP, is a protocol for accessing
-and maintaining distributed directory information. Basically a database
-lookup. See RFC 4511. LDAP servers and clients use TCP port 389.
+O Protocolo Leve para Acesso a Diretório(*Lightweight Directory Access Protocol* em inglês), LDAP, é um protocolo para acessar e manter informações de diretório distribuídas. Basicamente, uma pesquisa de banco de dados. Consulte RFC 4511. Os servidores e clientes LDAP usam a porta TCP 389.
 
 ## LDAPS
 
-Secure LDAP is LDAP done over an SSL/TLS connection.
+O LDAP seguro é o LDAP feito por meio de uma conexão SSL/TLS.
 
 ## MQTT
 
-Message Queuing Telemetry Transport, MQTT, is a protocol commonly used in IoT
-systems for interchanging data mostly involving smaller devices. It is a so
-called "publish-subscribe" protocol.
+O Transporte de Telemetria de Enfileiramento de Mensagens (*Message Queuing Telemetry Transport* em inglês), MQTT é um protocolo comumente usado em sistemas de Internet das Coisas (*IoT* em inglês) para troca de dados envolvendo principalmente dispositivos menores. É um protocolo denominado de "publicação-assinatura".
 
 ## POP3
 
-The Post Office Protocol version 3 (POP3) is a protocol for retrieving email
-from a server. See RFC 1939. POP3 servers and clients use TCP port 110. Whilst
-connections to the server start out as cleartext, SSL/TLS communication may be
-supported by the client explicitly requesting to upgrade the connection using
-the `STLS` command. See RFC 2595.
+O Protocolo Postal (*Post Office Protocol* em inglês) versão 3 (POP3) é um protocolo para recuperar e-mail de um servidor. Veja RFC 1939. Os servidores e clientes POP3 usam a porta 110 do TCP. Embora as conexões com o servidor comecem como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STLS`. Consulte RFC 2595.
 
 ## POP3S
 
-Secure POP3 is POP3 done over an SSL/TLS connection. Such connections implicitly
-start out using SSL/TLS and as such servers and clients use TCP port 995 to
-communicate with each other. See RFC 8314.
+O POP3 seguro é feito POP3 em uma conexão SSL/TLS.Essas conexões são implicitamente iniciadas usando SSL/TLs e, como tal servidores e clientes usam a porta TCP 995 para se comunicar entre si. Veja RFC 8314.
 
 ## RTMP
 
-The Real-Time Messaging Protocol (RTMP) is a protocol for streaming audio,
-video and data. RTMP servers and clients use TCP port 1935.
+The Protocolo de Mensagens em Tempo Real (*Real-Time Messaging Protocol* em inglês) (RTMP) é um protocolo usado para transmitir áudio, vídeo e dados. Servidores e clientes RTMP usam a porta TCP 1935.
 
 ## RTSP
 
-The Real Time Streaming Protocol (RTSP) is a network control protocol to
-control streaming media servers. See RFC 2326. RTSP servers and clients use
-TCP and UDP port 554.
+O Protocolo de Transmissão em Tempo Real (*Real Time Streaming Protocol*) (RTSP) é um protocolo de controle de rede para controlar servidores de *streaming* (fluxo) de mídia. Consulte RFC 2326. Os servidores e clientes RTSP usam a porta 554 TCP e UDP.
 
 ## SCP
 
-The Secure Copy (SCP) protocol is designed to copy files to and from a remote
-SSH server. SCP servers and clients use TCP port 22.
+O protocolo de cópia segura (*Secure Copy Protocolo* em inglês) (SCP) é projetado para copiar arquivos de e para um servidor SSH remoto.Servidores e clientes SCP usam a porta TCP 22.
 
 ## SFTP
 
-The SSH File Transfer Protocol (SFTP) that provides file access, file
-transfer, and file management over a reliable data stream. SFTP servers and
-clients use TCP port 22.
+O Protocolo de Transferência de Arquivos via SSH (*SSH File Transfer Protocol* em inglês) (SFTP), que fornece acesso e gerenciamento de arquivos em um fluxo de dados confiável. Os servidores e clientes SFTP usam a porta TCP 22.
 
 ## SMB
 
-The Server Message Block (SMB) protocol is also known as CIFS. It is an
-application-layer network protocol mainly used for providing shared access to
-files, printers, and serial ports and miscellaneous communications between
-nodes on a network. SMB servers and clients use TCP port 445.
+O Protocolo Bloco de Mensagens do Servidor (*Server Message Block* em inglês) (SMB) também é conhecido como CIFS. É um protocolo de rede de camada de aplicação usado principalmente para fornecer acesso compartilhado a arquivos, impressoras e portas seriais e comunicações diversas entre nós em uma rede. Os servidores e clientes SMB usam a porta TCP 445.
 
 ## SMTP
 
-The Simple Mail Transfer Protocol (SMTP) is a protocol for email
-transmission. See RFC 5321. SMTP servers and clients use TCP port 25. Whilst
-connections to the server start out as cleartext, SSL/TLS communication may be
-supported by the client explicitly requesting to upgrade the connection using
-the `STARTTLS` command. See RFC 3207.
+Protocolo Simples de Transferência de Correio (*Simple Mail Transfer Protocol* em inglês) (SMTP) é um protocolo para transmissão de e-mail. Veja RFC 5321. Os servidores e clientes SMTP usam a porta TCP 25. Embora as conexões com o servidor comecem como texto não criptografado, a comunicação SSL/TLS pode ser suportada pelo cliente solicitando explicitamente a atualização da conexão usando o comando `STARTTLS`. Consulte RFC 3207.
 
 ## SMTPS
 
-Secure SMTP, sometimes called SSMTP, is SMTP done over an SSL/TLS connection.
-Such connections implicitly start out using SSL/TLS and as such servers and
-clients use TCP port 465 to communicate with each other. See RFC 8314.
+O SMTP seguro, às vezes chamado de SSMTP, é o SMTP feito por meio de uma conexão SSL/TLS. Essas conexões começam implicitamente usando SSL/TLS e, dessa forma, servidores e clientes usam a porta TCP 465 para se comunicarem entre si. Consulte RFC 8314.
 
 ## TELNET
 
-TELNET is an application layer protocol used over networks to provide a
-bidirectional interactive text-oriented communication facility using a virtual
-terminal connection. See RFC 854. TELNET servers and clients use TCP port 23.
+TELNET é um protocolo de camada de aplicação usado em redes para fornecer um recurso de comunicação orientado a texto interativo bidirecional usando uma conexão de terminal virtual. Consulte RFC 854. Os servidores e clientes TELNET usam a porta 23 do TCP.
 
 ## TFTP
 
-The Trivial File Transfer Protocol (TFTP) is a protocol for doing simple file
-transfers over UDP to get a file from or put a file onto a remote host. TFTP
-servers and clients use UDP port 69.
+O Protocolo Trivial de Transferência de Arquivos (*Trivial File Transfer Protocol* em inglês) (TFTP) é um protocolo para fazer transferências de arquivos simples sobre UDP para obter ou colocar um arquivo em um host remoto. Os servidores e clientes TFTP usam a porta UDP 69.
