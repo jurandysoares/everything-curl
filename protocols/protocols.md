@@ -17,18 +17,18 @@ Para complicar ainda mais, os protocolos geralmente existem em diferentes versõ
 
 ## Que outros protocolos existem?
 
-O mundo está cheio de protocolos, antigos e novos. Protocolos antigos são abandonados e descartados, e novos são introduzidos. Nunca existe um estado de estabilidade, mas a situação muda de dia para dia e de ano para ano. Você pode ter certeza de que haverá novos protocolos adicionados à lista acima no futuro e que haverá novas versões dos protocolos já listados.
+O mundo está cheio de protocolos, antigos e novos. Protocolos antigos são abandonados e descartados, e novos são introduzidos. Nunca existe um estado de estabilidade, mas a situação muda dia a dia e ano a ano. Você pode ter certeza de que haverá novos protocolos adicionados à lista acima no futuro e que haverá novas versões dos protocolos já listados.
 
 É claro que já existem outros protocolos que curl ainda não suporta. Estamos abertos para oferecer suporte a mais protocolos que atendam aos paradigmas gerais de curl, só precisamos que os desenvolvedores escrevam os ajustes de código necessários para eles.
 
 
 ## Como os protocolos são desenvolvidos?
 
-Ambas as novas versões de protocolos existentes e protocolos inteiramente novos são geralmente desenvolvidos por pessoas ou equipes que acham que os existentes não são bons o suficiente. Algo sobre eles os torna inadequados para um caso de uso específico ou talvez alguma ideia nova que possa ser aplicada para melhorar as coisas tenha surgido.
+Ambas as novas versões de protocolos existentes e protocolos inteiramente novos são geralmente desenvolvidos por pessoas ou equipes que acham que os existentes não são bons o suficiente. Algo sobre eles os torna inadequados para um caso de uso específico ou talvez tenha surgido alguma ideia nova que possa ser aplicada para melhorar as coisas.
 
-Claro, nada impede ninguém de desenvolver um protocolo inteiramente por conta própria em seu próprio prazer em seu próprio quintal, mas os principais protocolos são geralmente trazidos para o IETF em um estágio bastante inicial, onde são então discutidos, refinados, debatidos e polidos e então, eventualmente, idealmente, se tornam um documento RFC publicado.
+Claro, nada impede ninguém de desenvolver um protocolo inteiramente por conta própria e prazer em seu quintal, mas os principais protocolos são levados geralmente para o IETF em um estágio bastante inicial, onde são então discutidos, refinados, debatidos e polidos e então, eventualmente, idealmente, se tornam um documento RFC publicado.
 
-Os desenvolvedores de software então leem as especificações RFC e implantam seu código no mundo inteiro com base em suas interpretações das palavras nesses documentos. Às vezes acontece que algumas das especificações estão sujeitas a interpretações muito diferentes ou às vezes os engenheiros são apenas preguiçosos e ignoram os bons conselhos nas especificações e implantam algo que não segue. Escrever software que interopera com outras implementações das especificações pode, portanto, acabar sendo um trabalho árduo.
+Os desenvolvedores de software então leem as especificações RFC e implantam seu código no mundo inteiro com base em suas interpretações das palavras nesses documentos. Às vezes acontece que algumas das especificações estão sujeitas a interpretações muito diferentes ou às vezes os engenheiros são apenas preguiçosos e ignoram os bons conselhos nas especificações e implantam algo que não aderem. Escrever software que interopera com outras implementações das especificações pode, portanto, acabar sendo um trabalho árduo.
 
 ## Quanto os protocolos mudam?
 
@@ -44,12 +44,12 @@ Os protocolos mencionados neste capítulo são todos "Protocolos da camada de ap
 
 Geralmente, existem especificações de protocolo que nos dizem como enviar e receber dados para protocolos específicos. As especificações de protocolo que seguimos são RFCs reunidas e publicadas pela IETF.
 
-Alguns protocolos não estão devidamente documentados em um RFC final, como, por exemplo, SFTP para o qual nossa implementação é baseada em um rascunho da Internet que não é o último disponível.
+Alguns protocolos não estão devidamente documentados em uma RFC final, como, por exemplo, o SFTP, para o qual nossa implementação é baseada em um rascunho da Internet que não é o último disponível.
 
 Os protocolos são, no entanto, falados por duas partes e, como em qualquer conversa, existem dois lados de compreensão de algo ou interpretando as instruções dadas em uma especificação. Além disso, muito software de rede é escrito sem os autores prestando muita atenção à especificação, então eles acabam fazendo alguns atalhos, ou talvez eles apenas interpretam o texto de maneira diferente. Às vezes, mesmo erros e bugs fazem software se comportar de maneiras que não são mandadas pela especificação e às vezes até francamente proibidas nas especificações.
 
-No projeto Curl, usamos as especificações publicadas como regras sobre como atuar até aprender qualquer outra coisa. Se as implementações alternativas populares atuam diferentemente do que o que achamos que a especificação diz e esse comportamento alternativo é o que funciona amplamente na grande Internet, então as chances são que vamos mudar de pé e, em vez disso, decidir agir como os outros. Se um servidor se recusar a falar conosco quando achamos que seguimos a especificação, mas funciona bem quando dobramos as regras a cada tão ligeiramente, provavelmente acabamos dobrando-os exatamente dessa maneira - se ainda podemos trabalhar com sucesso com outras implementações.
+No projeto Curl, usamos as especificações publicadas como regras sobre como atuar até aprender qualquer outra coisa. Se as implementações alternativas populares atuam diferentemente do que o que achamos que a especificação diz e esse comportamento alternativo é o que funciona amplamente na grande Internet, então as chances são que vamos mudar e, em vez disso, decidir agir como os outros. Se um servidor se recusar a falar conosco quando achamos que seguimos a especificação, mas funciona bem quando quebramos ligeiramente as regras, provavelmente acabamos quebrando-as exatamente dessa maneira - se ainda pudemos trabalhar com sucesso com outras implementações.
 
 Em última análise, é uma decisão pessoal e passível de discussão em todos os casos em que pensamos que uma especificação e o mundo real não se alinham.
 
-Nos piores casos, introduzimos opções para permitir que os desenvolvedores de aplicativos e os usuários da Curl tenham a palavra final sobre o que o curl deve fazer. Eu digo pior porque muitas vezes é muito difícil pedir aos usuários tomar essas decisões, pois geralmente envolve detalhes complicados e estranheza acontecendo e é muito para fazer os usuários. Devemos sempre fazer o nosso melhor para evitar pressionar tais decisões de protocolo para os usuários.
+Nos piores casos, introduzimos opções para permitir que os desenvolvedores de aplicativos e os usuários da Curl tenham a palavra final sobre o que o curl deve fazer. Eu digo pior porque muitas vezes é muito difícil pedir aos usuários tomar essas decisões, pois geralmente envolve detalhes complicados e estranheza acontecendo e é muita coisa para pergunta aos usuários. Devemos sempre fazer o nosso melhor para evitar levar tais decisões de protocolo para os usuários.
